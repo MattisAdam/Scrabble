@@ -1,0 +1,186 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\code\\Sainz\\Scrable\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\generateboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:generateboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\hand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:hand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\validewords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:validewords.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\name.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:name.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\fonction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:fonction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-29T12:52:38.967Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Game.cs",
+              "RelativeDocumentMoniker": "Game.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Game.cs",
+              "RelativeToolTip": "Game.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwBgAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T08:21:41.982Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Player.cs",
+              "RelativeDocumentMoniker": "Player.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Player.cs",
+              "RelativeToolTip": "Player.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T06:44:43.423Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Hand.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Hand.cs",
+              "RelativeDocumentMoniker": "Hand.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Hand.cs",
+              "RelativeToolTip": "Hand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T15:18:53.465Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Name.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Name.cs",
+              "RelativeDocumentMoniker": "Name.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Name.cs",
+              "RelativeToolTip": "Name.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwC0AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T15:19:46.237Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Score.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Score.cs",
+              "RelativeDocumentMoniker": "Score.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Score.cs",
+              "RelativeToolTip": "Score.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T15:20:15.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Fonction.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
+              "RelativeDocumentMoniker": "Fonction.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
+              "RelativeToolTip": "Fonction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T09:34:09.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LettersBag.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
+              "RelativeDocumentMoniker": "LettersBag.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
+              "RelativeToolTip": "LettersBag.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowDkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T14:19:02.214Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ValideWords.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\ValideWords.cs",
+              "RelativeDocumentMoniker": "ValideWords.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\ValideWords.cs",
+              "RelativeToolTip": "ValideWords.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T12:13:10.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenerateBoard.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\GenerateBoard.cs",
+              "RelativeDocumentMoniker": "GenerateBoard.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\GenerateBoard.cs",
+              "RelativeToolTip": "GenerateBoard.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAIwFcAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-13T09:04:22.974Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
