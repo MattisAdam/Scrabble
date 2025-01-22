@@ -6,6 +6,8 @@ public class Program
     {
         var game = new Game();
         game.InitGame();
+        
+        
         //game.Play();
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Channels;
+﻿using System.Security.Cryptography;
 
 namespace Scrable
 {
@@ -9,46 +6,55 @@ namespace Scrable
     {
         private GenerateBoard _board = new GenerateBoard();
         private List<Player> _players = new List<Player>();
-        
-        
-        int maxPlayers = 4;
-       
+        public readonly static int MaxLettersPerPlayer = 7;
 
         public void InitGame()
         {
             LettersBag.InitLettersBag();
+            InitPlayers();
 
-            var namePlayer = new Name(" ");
-            namePlayer.InitPlayersName();
+            foreach (var player in _players) {
+                Console.WriteLine(player.Name);
+                player.Rack.DisplayRack();
+            }
+
             _board.InitBoard();
-            Random getRandomPositionOnLettersBag = new Random();
-            int randomPosition = getRandomPositionOnLettersBag.Next(LettersBag.NumberPiecesInBag());
-            ValideWords.LoadWords("J:/Various/Home/NEW_Personal_Files/LEF/Scrable/DictionnaryLoader.txt");
-
-            
-
-
-
-
-            //ShowNamesPlayersOnTheList();
-
-            //Donner une main aux joueurs (player.Hand)
-            //1.Aller piocher 7 lettres dans Letters (LettersBag), mettre a jour le dictionnaire avec le nombre de lettre qu'il reste
-            //2. Les donner aux joueurs (Player.Hand)
             _board.Display();
-            
-
         }
 
-        
-        
-        
-
-
-        public void ShowLettersForOnePlayer()
+        public void InitPlayers()
         {
+            var numberOfPlayers = GetNumbersOfplayers();
+            var playerNames = AskNameOfPlayers(numberOfPlayers);
+            foreach (var playerName in playerNames) {
+                var player = new Player(playerName, new Rack());
+                _players.Add(player);
+            }
+        }
+
+        public int GetNumbersOfplayers()
+        {
+            int numberPlayers = Errors.NumberOfPlayer();
+            return numberPlayers;
+        }
+        public static int AskNumbersOfPlayers()
+        {
+            Console.WriteLine("How many players on the table ?");
+            var numberPlayers = Fonction.EnterNumber();
+            return numberPlayers;
+        }
+        
+        public List<string> AskNameOfPlayers(int numberOfPlayers)
+        {
+            var listPlayers = new List<string>();
+
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                Console.Write($"what the player {i + 1}'s name ?\n");
+                var playerName = Fonction.EnterString();
+                listPlayers.Add(playerName);
+            }
+            return listPlayers;
         }
     }
-    }
-
-
+}
