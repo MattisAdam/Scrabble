@@ -2,9 +2,12 @@
 {
     public static class LettersBag
     {
-        public static Dictionary<char, int> lettersBag { 
-            get; private set; } = new Dictionary<char, int>();
-        public static void InitLettersBag() {
+        public static Dictionary<char, int> lettersBag
+        {
+            get; private set;
+        } = new Dictionary<char, int>();
+        public static void InitLettersBag()
+        {
             lettersBag.Add('A', 9);
             lettersBag.Add('B', 2);
             lettersBag.Add('C', 2);
@@ -53,17 +56,17 @@
                     }
                 }
             }
-                return result;
+            return result;
         }
-        public static int NumberPiecesInBag() 
-        { 
+        public static int NumberPiecesInBag()
+        {
             int result = 0;
             result = lettersBag.Sum(x => x.Value);
             return result;
         }
         public static void PlayerPickLetters()
         {
-            
+
             ///attention ici il faut en compte les probabilité de piocher chaque lettre. par exemple la proba de piocher 'E' est de 15/100
         }
     }

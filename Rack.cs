@@ -5,16 +5,16 @@
         Random getRandomPositionOnLettersBag = new Random();
         List<char> rack = new List<char>();
 
-        public Rack() {
+        public Rack()
+        {
             PickLettersForPlayer();
-            
         }
         public void DisplayRack()
         {
             for (int i = 0; i < rack.Count; i++)
             {
-                
-                if((rack.Count)-1 == i)
+
+                if ((rack.Count) - 1 == i)
                 {
                     Console.Write($"{rack[i]}");
                 }
@@ -39,22 +39,21 @@
             {
                 int randomPosition = getRandomPositionOnLettersBag.Next(LettersBag.NumberPiecesInBag());
                 pickedLetter = LettersBag.PickPiecesPosition(randomPosition);
-                rack.Add(pickedLetter); 
+                rack.Add(pickedLetter);
             }
         }
 
-        public char ChooseALetterFromRack(char letter)
+        public bool ChooseALetterFromRack(char letter)
         {
             for (int i = 0; i < rack.Count; i++)
             {
-                if (letter == rack[i]) { return rack[i]; }
+                if (letter == rack[i]) { return true; }
                 else
                 {
                     Console.WriteLine("The choosen Letter is not on your rack");
                 }
             }
-            return letter;
+            return false;
         }
     }
 }
-

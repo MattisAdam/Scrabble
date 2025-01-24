@@ -1,17 +1,12 @@
-﻿using System.Data;
-
-namespace Scrable
+﻿namespace Scrable
 {
     public static class ValideWords
     {
         private static HashSet<string> SetOfValidWords { get;  set; }
-
         static ValideWords()
         {
             SetOfValidWords = new HashSet<string>();
         }
-
-
         public static void LoadWords(string filePath)
         {
             // Lire chaque ligne du fichier et l'ajouter à l'ensemble
@@ -36,7 +31,6 @@ namespace Scrable
             word = word.Replace('ö', 'o');
             word = word.Replace('ü', 'u');
             word = word.Replace('â', 'a');
-            
             word = word.ToUpper();
             return word;
         }

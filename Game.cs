@@ -1,37 +1,28 @@
-﻿using System.Security.Cryptography;
-
-namespace Scrable
+﻿namespace Scrable
 {
     public class Game
     {
-        private GenerateBoard _board = new GenerateBoard();
-        private List<Player> _players = new List<Player>();
+        private Board _board = new Board();
+        public List<Player> _players = new List<Player>();
         public readonly static int MaxLettersPerPlayer = 7;
-
         public void InitGame()
         {
+            Console.ResetColor();
             LettersBag.InitLettersBag();
             InitPlayers();
-
-            foreach (var player in _players) {
-                Console.WriteLine(player.Name);
-                player.Rack.DisplayRack();
-            }
-
             _board.InitBoard();
             _board.Display();
         }
-
         public void InitPlayers()
         {
             var numberOfPlayers = GetNumbersOfplayers();
             var playerNames = AskNameOfPlayers(numberOfPlayers);
-            foreach (var playerName in playerNames) {
+            foreach (var playerName in playerNames)
+            {
                 var player = new Player(playerName, new Rack());
                 _players.Add(player);
             }
         }
-
         public int GetNumbersOfplayers()
         {
             int numberPlayers = Errors.NumberOfPlayer();
@@ -55,6 +46,24 @@ namespace Scrable
                 listPlayers.Add(playerName);
             }
             return listPlayers;
+        }
+
+        public void Play()
+        {
+            RoundPlay();
+        }
+
+        public void RoundPlay()
+        {
+            foreach (var player in _players)
+            {
+                Console.WriteLine();
+                Console.WriteLine($"C'est a {player.Name} de jouer");
+                Console.Write("Votre rack : "); player.Rack.DisplayRack();
+                Console.WriteLine();
+                _board.PlaceLetter();
+                _board.Display();
+            }
         }
     }
 }

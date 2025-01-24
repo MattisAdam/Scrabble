@@ -17,6 +17,12 @@
             Score = 0;
         }
 
+        public Player(int? score, string name)
+        {
+            Score = score;
+            Name = name;
+        }
+
 
 
     }
