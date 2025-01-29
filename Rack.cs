@@ -3,11 +3,11 @@
     public class Rack
     {
         Random getRandomPositionOnLettersBag = new Random();
-        List<char> rack = new List<char>();
-
+        List<char> rack = new();
         public Rack()
         {
             PickLettersForPlayer();
+
         }
         public void DisplayRack()
         {
@@ -25,7 +25,6 @@
             }
             Console.WriteLine("");
         }
-
         public void PickLettersForPlayer()
         {
             int requiredNumberOfNewLetters = Game.MaxLettersPerPlayer - rack.Count;
@@ -42,18 +41,35 @@
                 rack.Add(pickedLetter);
             }
         }
-
-        public bool ChooseALetterFromRack(char letter)
+        public bool VerificationLetterInRack(char letter, int position)
         {
+            if (letter == rack[position]) { return true; }
+            else { return false; }
+        }
+        public char TakeAletter()
+        {
+
+            char letter = Fonction.EnterChar();
+            letter = Fonction.CharToUpper(letter);
+            bool check = false;
+            Console.WriteLine();
             for (int i = 0; i < rack.Count; i++)
             {
-                if (letter == rack[i]) { return true; }
-                else
-                {
-                    Console.WriteLine("The choosen Letter is not on your rack");
-                }
+                check = VerificationLetterInRack(letter, i);
+                if (check) { break;  }
+                
             }
-            return false;
+            Console.WriteLine();
+            if(check != true)
+            {
+                Console.WriteLine("Letter not fund on the rack please retry...");
+                TakeAletter();
+            }
+            Console.WriteLine("Letter find");
+            rack.Remove(letter);
+            return letter;
+            
         }
+
     }
 }

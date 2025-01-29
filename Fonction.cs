@@ -32,5 +32,10 @@
 
             return x;
         }
+        public static char CharToUpper (char letter)
+        {
+            letter = char.ToUpper(letter);
+            return letter;
+        }
     }
 }

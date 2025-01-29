@@ -5,7 +5,6 @@ namespace Scrable
     public class Board
     {
         private char[,] grid = new char[15, 15];
-        //private int[,] bonus = new int[15, 15];
         private List<Player> _players = new List<Player>();
         public void InitBoard()
         {
@@ -30,17 +29,18 @@ namespace Scrable
                 grid[placementI, placementJ] = t.ToCharArray()[0];
             }
         }
-        public void PlaceLetter()
+        public void PlaceLetter(Player player)
         {
             int positionI;
             int positionJ;
+            int valueBonus = 1;
             positionJ = _TargetPosition("Choose a horizontal position");
             positionI = _TargetPosition("Choose a vertical position");
             Console.WriteLine($"case : {positionI}, {positionJ} Value : {grid[positionI, positionJ]}");
             if (grid[positionI, positionJ] == ' ' || grid[positionI, positionJ] == '2' || grid[positionI, positionJ] == '3' || grid[positionI, positionJ] == '4')
             {
-                var check = int.TryParse(grid[positionI, positionJ].ToString(), out int valueBonus);
-                grid[positionI, positionJ] = _TakeALetter();
+                var check = int.TryParse(grid[positionI, positionJ].ToString(), out valueBonus);
+                grid[positionI, positionJ] = player.Rack.TakeAletter();
                 Console.WriteLine();
                 Console.WriteLine($"la case {positionI}, {positionJ} vaut {valueBonus} fois, score mis a jour..");
                 //Console.WriteLine($"after : {grid[positionI, positionJ]}");
@@ -48,6 +48,7 @@ namespace Scrable
             else
             {
                 Console.WriteLine($"la case {positionI}, {positionJ} est deja occupé !");
+                PlaceLetter(player);
             }
             Console.WriteLine($"Score : ");
         }
@@ -117,14 +118,6 @@ namespace Scrable
             Console.WriteLine(message);
             int position = Fonction.EnterNumber();
             return position;
-        }
-        private char _TakeALetter()
-        {
-            char letter = Fonction.EnterChar();
-            //Rack.ChooseALetterFromRack(letter);
-            letter = char.ToUpper(letter);
-            Console.WriteLine(' ');
-            return letter;
         }
     }
 }

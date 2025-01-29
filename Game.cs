@@ -1,9 +1,11 @@
-﻿namespace Scrable
+﻿using System.Diagnostics.Metrics;
+
+namespace Scrable
 {
     public class Game
     {
         private Board _board = new Board();
-        public List<Player> _players = new List<Player>();
+        public List<Player> players = new List<Player>();
         public readonly static int MaxLettersPerPlayer = 7;
         public void InitGame()
         {
@@ -12,6 +14,8 @@
             InitPlayers();
             _board.InitBoard();
             _board.Display();
+            
+            
         }
         public void InitPlayers()
         {
@@ -20,7 +24,7 @@
             foreach (var playerName in playerNames)
             {
                 var player = new Player(playerName, new Rack());
-                _players.Add(player);
+                players.Add(player);
             }
         }
         public int GetNumbersOfplayers()
@@ -52,17 +56,20 @@
         {
             RoundPlay();
         }
-
         public void RoundPlay()
         {
-            foreach (var player in _players)
+            for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine();
-                Console.WriteLine($"C'est a {player.Name} de jouer");
-                Console.Write("Votre rack : "); player.Rack.DisplayRack();
-                Console.WriteLine();
-                _board.PlaceLetter();
-                _board.Display();
+                foreach (var player in players)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine($"C'est a {player.Name} de jouer");
+                    Console.Write("Votre rack : "); player.Rack.DisplayRack(); ;
+                    Console.WriteLine();
+                    _board.PlaceLetter(player);
+                    _board.Display();
+                    player.Rack.PickLettersForPlayer();
+                }
             }
         }
     }

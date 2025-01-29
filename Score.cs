@@ -6,9 +6,9 @@
         public void oui() 
         {
            var Game = new Game();
-            for (var i = 0; i < Game._players.Count; i++)
+            for (var i = 0; i < Game.players.Count; i++)
             {
-                Console.WriteLine(Game._players[i]);
+                Console.WriteLine(Game.players[i]);
                 Console.WriteLine("Miaou");
             }
             
