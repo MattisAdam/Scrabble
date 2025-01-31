@@ -7,13 +7,11 @@
         public Rack()
         {
             PickLettersForPlayer();
-
         }
         public void DisplayRack()
         {
             for (int i = 0; i < rack.Count; i++)
             {
-
                 if ((rack.Count) - 1 == i)
                 {
                     Console.Write($"{rack[i]}");
@@ -46,29 +44,48 @@
             if (letter == rack[position]) { return true; }
             else { return false; }
         }
-        public char TakeAletter()
+        public char TakeAletter(char letter)
         {
-
-            char letter = Fonction.EnterChar();
-            letter = Fonction.CharToUpper(letter);
             bool check = false;
             Console.WriteLine();
-            for (int i = 0; i < rack.Count; i++)
+            while (check == false)
             {
-                check = VerificationLetterInRack(letter, i);
-                if (check) { break;  }
-                
+                letter = Fonction.CharToUpper(letter);
+                for (int i = 0; i < rack.Count; i++)
+                {
+                    check = VerificationLetterInRack(letter, i);
+                    if (check) { break; }
+                }
+                Console.WriteLine();
+                if (check != true)
+                {
+                    Console.WriteLine("Letter not fund on the rack please retry...");
+                }
+                else
+                {
+                    Console.WriteLine("Letter find");
+                    rack.Remove(letter);
+                }
             }
-            Console.WriteLine();
-            if(check != true)
-            {
-                Console.WriteLine("Letter not fund on the rack please retry...");
-                TakeAletter();
-            }
-            Console.WriteLine("Letter find");
-            rack.Remove(letter);
             return letter;
             
+        }
+
+        public List<char> list Word()
+        {
+            List<char> list = new List<char>();
+            var word = Fonction.EnterString();
+            char x = ' ';
+            for (int i = 0; i < word.Length; i++)
+            {
+                x = word[i];
+                TakeAletter(x);
+                list.Add(x);
+            }
+            for(int i = 0; i< list.Count; i++)
+            {
+                Console.WriteLine(list[i]);
+            }
         }
 
     }

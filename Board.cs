@@ -31,6 +31,7 @@ namespace Scrable
         }
         public void PlaceLetter(Player player)
         {
+            
             int positionI;
             int positionJ;
             int valueBonus = 1;
@@ -40,7 +41,7 @@ namespace Scrable
             if (grid[positionI, positionJ] == ' ' || grid[positionI, positionJ] == '2' || grid[positionI, positionJ] == '3' || grid[positionI, positionJ] == '4')
             {
                 var check = int.TryParse(grid[positionI, positionJ].ToString(), out valueBonus);
-                grid[positionI, positionJ] = player.Rack.TakeAletter();
+                
                 Console.WriteLine();
                 Console.WriteLine($"la case {positionI}, {positionJ} vaut {valueBonus} fois, score mis a jour..");
                 //Console.WriteLine($"after : {grid[positionI, positionJ]}");

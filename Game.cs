@@ -5,7 +5,7 @@ namespace Scrable
     public class Game
     {
         private Board _board = new Board();
-        public List<Player> players = new List<Player>();
+        public List<Player> _players = new List<Player>();
         public readonly static int MaxLettersPerPlayer = 7;
         public void InitGame()
         {
@@ -24,7 +24,7 @@ namespace Scrable
             foreach (var playerName in playerNames)
             {
                 var player = new Player(playerName, new Rack());
-                players.Add(player);
+                _players.Add(player);
             }
         }
         public int GetNumbersOfplayers()
@@ -54,21 +54,24 @@ namespace Scrable
 
         public void Play()
         {
-            RoundPlay();
+            while (true)
+            {
+                RoundPlay();
+            }
         }
         public void RoundPlay()
         {
             for (int i = 0; i < 10; i++)
             {
-                foreach (var player in players)
+                foreach (var _player in _players)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"C'est a {player.Name} de jouer");
-                    Console.Write("Votre rack : "); player.Rack.DisplayRack(); ;
+                    Console.WriteLine($"C'est a {_player.Name} de jouer");
+                    Console.Write("Votre rack : "); _player.Rack.DisplayRack(); ;
                     Console.WriteLine();
-                    _board.PlaceLetter(player);
+                    _board.PlaceLetter(_player);
                     _board.Display();
-                    player.Rack.PickLettersForPlayer();
+                    _player.Rack.PickLettersForPlayer();
                 }
             }
         }

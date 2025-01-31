@@ -1,4 +1,6 @@
-﻿namespace Scrable
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace Scrable
 {
     public class Fonction
     {

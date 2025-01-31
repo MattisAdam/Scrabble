@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\code\\Sainz\\Scrable\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\rack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,8 +15,12 @@
       "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +30,24 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Rack.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Rack.cs",
               "RelativeDocumentMoniker": "Rack.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\Rack.cs",
               "RelativeToolTip": "Rack.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAowEUAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAqwFYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-29T14:12:55.09Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -60,39 +60,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Board.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Board.cs",
               "RelativeDocumentMoniker": "Board.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\Board.cs",
               "RelativeToolTip": "Board.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAwwDIAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAlwCoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T15:41:18.562Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Game.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Game.cs",
               "RelativeDocumentMoniker": "Game.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\Game.cs",
               "RelativeToolTip": "Game.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAIwEUAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwDkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T15:41:12.869Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "LettersBag.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
               "RelativeDocumentMoniker": "LettersBag.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
               "RelativeToolTip": "LettersBag.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwAQAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvzAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-22T16:07:58.445Z",
               "EditorCaption": ""
