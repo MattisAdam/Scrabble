@@ -67,9 +67,13 @@ namespace Scrable
                 {
                     Console.WriteLine();
                     Console.WriteLine($"C'est a {_player.Name} de jouer");
-                    Console.Write("Votre rack : "); _player.Rack.DisplayRack(); ;
+
+
+                    var word = _player.ChooseWord();
+
+                    _board.PlaceWord(word);
+
                     Console.WriteLine();
-                    _board.PlaceLetter(_player);
                     _board.Display();
                     _player.Rack.PickLettersForPlayer();
                 }

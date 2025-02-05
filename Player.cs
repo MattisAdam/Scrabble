@@ -1,4 +1,7 @@
-﻿namespace Scrable
+﻿using System.Dynamic;
+using System.Security.Cryptography;
+
+namespace Scrable
 { 
     public class Player
     {
@@ -23,7 +26,26 @@
             Name = name;
         }
 
-
+        public string ChooseWord()
+        {
+            List<char> rack = new();
+            var x = new Rack();
+            string word = "";
+            Console.Write("Votre rack : "); Rack.DisplayRack(); ;
+            for (int i = 0; i < x.Count; i++)
+            {
+                var letter = x.TakeAletter();
+                rack[i] = letter;
+                
+                var choice = Fonction.MenuWord();
+                if (choice == 2)
+                {
+                    break ;
+                }
+                Console.WriteLine($"Votre mot est {rack[i]}");
+            }
+            return word;
+        }
 
     }
 }

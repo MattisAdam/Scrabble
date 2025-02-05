@@ -39,5 +39,29 @@ namespace Scrable
             letter = char.ToUpper(letter);
             return letter;
         }
+        public static int MenuWord()
+        {
+            int choice;
+            bool check = false;
+            Console.WriteLine("Continue ?");
+            Console.WriteLine("YES => 1");
+            Console.WriteLine("NO => 2");
+            choice = EnterNumber();
+            while (!check)
+            {
+                if (choice != 1 || choice != 2)
+                {
+                    Console.WriteLine("ERROR ! retry...");
+
+                }
+                else
+                {
+                    check = true;
+                    break;
+                }
+            }
+            return choice;
+            
+        }
     }
 }

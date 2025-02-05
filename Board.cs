@@ -5,6 +5,7 @@ namespace Scrable
     public class Board
     {
         private char[,] grid = new char[15, 15];
+        private char[,] bonus = new char[15, 15];
         private List<Player> _players = new List<Player>();
         public void InitBoard()
         {
@@ -26,9 +27,16 @@ namespace Scrable
                 multiple = bonusMulti.Next(2, 5);
                 //TODO : FIND HOW TO CONVERT EASYER 
                 var t = multiple.ToString();
-                grid[placementI, placementJ] = t.ToCharArray()[0];
+                bonus[placementI, placementJ] = t.ToCharArray()[0];
             }
         }
+
+        public void PlaceWord(string word)
+        {
+            var _player = new Player();
+            PlaceLetter(_player);
+        }
+
         public void PlaceLetter(Player player)
         {
             
@@ -38,7 +46,8 @@ namespace Scrable
             positionJ = _TargetPosition("Choose a horizontal position");
             positionI = _TargetPosition("Choose a vertical position");
             Console.WriteLine($"case : {positionI}, {positionJ} Value : {grid[positionI, positionJ]}");
-            if (grid[positionI, positionJ] == ' ' || grid[positionI, positionJ] == '2' || grid[positionI, positionJ] == '3' || grid[positionI, positionJ] == '4')
+            
+            if (grid[positionI, positionJ] == ' ')
             {
                 var check = int.TryParse(grid[positionI, positionJ].ToString(), out valueBonus);
                 
@@ -89,11 +98,18 @@ namespace Scrable
                         }
                         else
                         {
-                            if (grid[(i - 1) / 2, (k - 1) / 2] == '2') { Console.ForegroundColor = ConsoleColor.Yellow; }
-                            if (grid[(i - 1) / 2, (k - 1) / 2] == '3') { Console.ForegroundColor = ConsoleColor.Green; }
-                            if (grid[(i - 1) / 2, (k - 1) / 2] == '4') { Console.ForegroundColor = ConsoleColor.Red; }
-                            if(grid[(i - 1) / 2, (k - 1) / 2] == ' ') { Console.ForegroundColor = ConsoleColor.Cyan; }
-                            Console.Write($" {grid[(i - 1) / 2, (k - 1) / 2]}");
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '2') { Console.ForegroundColor = ConsoleColor.Yellow; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '3') { Console.ForegroundColor = ConsoleColor.Green; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '4') { Console.ForegroundColor = ConsoleColor.Red; }
+                            if(bonus[(i - 1) / 2, (k - 1) / 2] == ' ') { Console.ForegroundColor = ConsoleColor.Cyan; }
+
+                            if(grid[(i - 1) / 2, (k - 1) / 2] != ' ')
+                                Console.Write($" {grid[(i - 1) / 2, (k - 1) / 2]}");
+                            else if (bonus[(i - 1) / 2, (k - 1) / 2] != '\0')
+                                Console.Write($" {bonus[(i - 1) / 2, (k - 1) / 2]}");
+                            else
+                                Console.Write("  ");
+
                             Console.ResetColor();
                             Console.ForegroundColor = ConsoleColor.Blue;
                         }
