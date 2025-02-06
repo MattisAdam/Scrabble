@@ -9,13 +9,14 @@ namespace Scrable
         public readonly static int MaxLettersPerPlayer = 7;
         public void InitGame()
         {
-            Console.ResetColor();
-            LettersBag.InitLettersBag();
-            InitPlayers();
-            _board.InitBoard();
-            _board.Display();
-            
-            
+
+            //LettersBag.InitLettersBag();
+            Score.InitScoreLetter();
+            var letter = Fonction.EnterChar();
+            _board.ScoreGestion(letter);
+            //InitPlayers();
+            //_board.InitBoard();
+            //_board.Display();
         }
         public void InitPlayers()
         {
@@ -38,7 +39,7 @@ namespace Scrable
             var numberPlayers = Fonction.EnterNumber();
             return numberPlayers;
         }
-        
+
         public List<string> AskNameOfPlayers(int numberOfPlayers)
         {
             var listPlayers = new List<string>();
@@ -54,30 +55,29 @@ namespace Scrable
 
         public void Play()
         {
-            while (true)
+            while (Rack.rack.Count == 7)
             {
                 RoundPlay();
             }
         }
         public void RoundPlay()
         {
-            for (int i = 0; i < 10; i++)
+
+            foreach (var _player in _players)
             {
-                foreach (var _player in _players)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine($"C'est a {_player.Name} de jouer");
+                Console.WriteLine();
+                Console.WriteLine($"it is {_player.Name}'s round");
 
 
-                    var word = _player.ChooseWord();
+                var word = _player.ChooseWord();
 
-                    _board.PlaceWord(word);
+                _board.PlaceWord(word);
 
-                    Console.WriteLine();
-                    _board.Display();
-                    _player.Rack.PickLettersForPlayer();
-                }
+                Console.WriteLine();
+                _board.Display();
+                _player.Rack.PickLettersForPlayer();
             }
+
         }
     }
 }

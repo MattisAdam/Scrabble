@@ -8,10 +8,11 @@ namespace Scrable
         public string Name { get; set; }
         public Rack Rack { get; set; }
         public int? Score { get; set; }
+        
 
         public Player()
         {
-
+            
         }
         public Player(string name, Rack rack)
         {
@@ -20,7 +21,7 @@ namespace Scrable
             Score = 0;
         }
 
-        public Player(int? score, string name)
+        public Player(int score, string name)
         {
             Score = score;
             Name = name;
@@ -28,22 +29,27 @@ namespace Scrable
 
         public string ChooseWord()
         {
-            List<char> rack = new();
+            List<string> words = new List<string>();
             var x = new Rack();
-            string word = "";
-            Console.Write("Votre rack : "); Rack.DisplayRack(); ;
-            for (int i = 0; i < x.Count; i++)
+            string word = string.Empty;
+            x.DisplayRack(); 
+            int occurence = Fonction.MenuWord();
+            for (int i = 0; i < occurence; i++)
             {
-                var letter = x.TakeAletter();
-                rack[i] = letter;
+                var letter = x.TakeAletter().ToString();
+                words.Add(letter);
+                Console.WriteLine();
                 
-                var choice = Fonction.MenuWord();
-                if (choice == 2)
-                {
-                    break ;
-                }
-                Console.WriteLine($"Votre mot est {rack[i]}");
+                Console.Write("your word is : ");
+                word = String.Join("", words);
+                Console.WriteLine(word);
+                Console.WriteLine();
+                Console.Write("your rack : "); Rack.DisplayRack();
+                Console.WriteLine();
             }
+            Console.WriteLine();
+
+            
             return word;
         }
 

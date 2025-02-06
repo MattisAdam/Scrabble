@@ -5,16 +5,15 @@ namespace Scrable
     public class Rack
     {
         Random getRandomPositionOnLettersBag = new Random();
-        List<char> rack = new();
+        public static List<char> rack = new List<char>();
         public Rack()
         {
             PickLettersForPlayer();
-
-
         }
         public void DisplayRack()
         {
-            for (int i = 0; i < rack.Count; i++)
+            for (
+                int i = 0; i < rack.Count; i++)
             {
                 if ((rack.Count) - 1 == i)
                 {
@@ -52,11 +51,12 @@ namespace Scrable
         {
             char letter = ' ';
             bool check = false;
-            Console.WriteLine();
+            
             while (check != true)
             {
                 letter = Fonction.EnterChar();
                 letter = Fonction.CharToUpper(letter);
+                
                 for (int i = 0; i < rack.Count; i++)
                 {
                     check = VerificationLetterInRack(letter, i);
@@ -64,32 +64,21 @@ namespace Scrable
                     
                    
                 }
-                if (check == true)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Letter find.");
-                    rack.Remove(letter);
-                }
-                else
+                if (check != true)
                 {
                     Console.WriteLine();
                     Console.WriteLine("Letter not found, please retry with a correct letter.");
                 }
+                else
+                {
+                    check = true;
+                    
+                }
             }
+            rack.Remove(letter);
             return letter;
         }
 
-        //public void Word()
-        //{
-        //    Console.WriteLine("Word");
-        //    List<string> word = new List<string>();
-              
-        //    for(int i = 0; i < rack.Count; i++)
-        //    {
-        //        string x = TakeAletter().ToString();
-        //        word.Add(x);
-        //        Console.WriteLine(word[i]);
-        //    }
-        //}
+        
     }
 }

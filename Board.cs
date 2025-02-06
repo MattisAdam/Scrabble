@@ -1,11 +1,12 @@
-﻿using static System.Formats.Asn1.AsnWriter;
+﻿using System.Windows.Markup;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace Scrable
 {
     public class Board
     {
         private char[,] grid = new char[15, 15];
-        private char[,] bonus = new char[15, 15];
+        private int[,] bonus = new int[15, 15];
         private List<Player> _players = new List<Player>();
         public void InitBoard()
         {
@@ -18,49 +19,65 @@ namespace Scrable
             Random bonusJ = new Random();
             Random bonusMulti = new Random();
             int multiple;
-            for (int i = 0; i < 196; i++)
+            for (int i = 0; i < 25; i++)
             {
                 int placementI;
                 int placementJ;
                 placementI = bonusI.Next(15);
                 placementJ = bonusJ.Next(15);
-                multiple = bonusMulti.Next(2, 5);
-                //TODO : FIND HOW TO CONVERT EASYER 
-                var t = multiple.ToString();
-                bonus[placementI, placementJ] = t.ToCharArray()[0];
+                multiple = bonusMulti.Next(2, 5);                
+                bonus[placementI, placementJ] = multiple;
             }
         }
 
         public void PlaceWord(string word)
         {
             var _player = new Player();
-            PlaceLetter(_player);
+            PlaceLetter(_player, word);
         }
 
-        public void PlaceLetter(Player player)
+        public void PlaceLetter(Player player, string word)
         {
-            
-            int positionI;
-            int positionJ;
-            int valueBonus = 1;
-            positionJ = _TargetPosition("Choose a horizontal position");
-            positionI = _TargetPosition("Choose a vertical position");
-            Console.WriteLine($"case : {positionI}, {positionJ} Value : {grid[positionI, positionJ]}");
-            
-            if (grid[positionI, positionJ] == ' ')
+            int positionI = 0;
+            int positionJ = 0;
+            int i = 0;
+            int pts = 0;
+            int factorPts = 1;
+            var verif = true;
+            while (verif == true)
             {
-                var check = int.TryParse(grid[positionI, positionJ].ToString(), out valueBonus);
-                
-                Console.WriteLine();
-                Console.WriteLine($"la case {positionI}, {positionJ} vaut {valueBonus} fois, score mis a jour..");
-                //Console.WriteLine($"after : {grid[positionI, positionJ]}");
+                positionJ = _TargetPosition("Choose a horizontal position");
+                positionI = _TargetPosition("Choose a vertical position");
+                verif = _ValidationBoard(positionI, positionJ);
             }
-            else
+
+            int orientation = Fonction.HorizontalOrVertical();
+            Console.WriteLine();
+            if (orientation == 1)
             {
-                Console.WriteLine($"la case {positionI}, {positionJ} est deja occupé !");
-                PlaceLetter(player);
+                foreach (var _letter in word)
+                {
+                    pts = _ValidationBoardBonus(positionI, positionJ+ i);
+                    if(pts != 0) { factorPts = pts * factorPts; }
+                    grid[positionI, positionJ + i] = _letter;
+                    i++;
+                }
             }
-            Console.WriteLine($"Score : ");
+            else if (orientation == 2)
+            {
+                foreach (var _letter in word)
+                {
+                    pts = _ValidationBoardBonus(positionI + i, positionJ);
+                    if (pts != 0) { factorPts = pts * factorPts; }
+                    grid[positionI + i, positionJ] = _letter;
+                    i++;
+                }
+            }
+            if(factorPts == 1)
+            {
+                factorPts = 0;
+            }
+            Console.WriteLine($"Score : {factorPts}");
         }
         public void Display()
         {
@@ -98,12 +115,12 @@ namespace Scrable
                         }
                         else
                         {
-                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '2') { Console.ForegroundColor = ConsoleColor.Yellow; }
-                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '3') { Console.ForegroundColor = ConsoleColor.Green; }
-                            if (bonus[(i - 1) / 2, (k - 1) / 2] == '4') { Console.ForegroundColor = ConsoleColor.Red; }
-                            if(bonus[(i - 1) / 2, (k - 1) / 2] == ' ') { Console.ForegroundColor = ConsoleColor.Cyan; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == 2) { Console.ForegroundColor = ConsoleColor.Yellow; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == 3) { Console.ForegroundColor = ConsoleColor.Green; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == 4) { Console.ForegroundColor = ConsoleColor.Red; }
+                            if (bonus[(i - 1) / 2, (k - 1) / 2] == ' ') { Console.ForegroundColor = ConsoleColor.Cyan; }
 
-                            if(grid[(i - 1) / 2, (k - 1) / 2] != ' ')
+                            if (grid[(i - 1) / 2, (k - 1) / 2] != ' ')
                                 Console.Write($" {grid[(i - 1) / 2, (k - 1) / 2]}");
                             else if (bonus[(i - 1) / 2, (k - 1) / 2] != '\0')
                                 Console.Write($" {bonus[(i - 1) / 2, (k - 1) / 2]}");
@@ -135,6 +152,40 @@ namespace Scrable
             Console.WriteLine(message);
             int position = Fonction.EnterNumber();
             return position;
+        }
+        private bool _ValidationBoard(int positionI, int positionJ)
+        {
+            bool check = false;
+
+            if (grid[positionI, positionJ] != ' ')
+            {
+                Console.WriteLine("This place was already taken buddy");
+                check = true;
+            }
+            return check;
+        }
+        private int _ValidationBoardBonus(int positionI, int positionJ)
+        {
+            var valueBonus = bonus[positionI, positionJ];
+            //if (valueBonus > 0 && valueBonus < 5)
+            //{
+            //    Console.WriteLine($"Score worth {valueBonus} times");
+            //}
+            //else if (valueBonus == 0)
+            //{
+            //    Console.WriteLine("The word got any bonus.");
+            //}
+            return valueBonus;
+
+
+        }
+
+        public int ScoreGestion(char letter)
+        {
+            var score = new Score();
+            var pts = score.GetTheScoreOfTheLetter(letter);
+          
+            return pts;
         }
     }
 }

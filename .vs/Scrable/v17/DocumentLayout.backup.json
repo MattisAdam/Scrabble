@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\code\\Sainz\\Scrable\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +15,20 @@
       "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\rack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:rack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\fonction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:fonction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:lettersbag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:score.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|c:\\code\\sainz\\scrable\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00A22BA1-544D-4BC6-9559-E5261EB5161A}|Scrable.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,97 +38,97 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Fonction.cs",
-              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
-              "RelativeDocumentMoniker": "Fonction.cs",
-              "ToolTip": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
-              "RelativeToolTip": "Fonction.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAA9wD4AAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T10:52:32.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Player.cs",
               "RelativeDocumentMoniker": "Player.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\Player.cs",
               "RelativeToolTip": "Player.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAYwCwAAAA+AAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAowCYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-05T09:26:53.052Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Rack.cs",
-              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Rack.cs",
-              "RelativeDocumentMoniker": "Rack.cs",
-              "ToolTip": "C:\\code\\Sainz\\Scrable\\Rack.cs",
-              "RelativeToolTip": "Rack.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAA9wAoAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T14:12:55.09Z",
+              "WhenOpened": "2025-02-06T16:38:26.914Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\code\\Sainz\\Scrable\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
+              "Title": "Score.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Score.cs",
+              "RelativeDocumentMoniker": "Score.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Score.cs",
+              "RelativeToolTip": "Score.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAqwCQAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T12:47:24.731Z",
+              "WhenOpened": "2025-02-06T16:01:01.958Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Board.cs",
-              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Board.cs",
-              "RelativeDocumentMoniker": "Board.cs",
-              "ToolTip": "C:\\code\\Sainz\\Scrable\\Board.cs",
-              "RelativeToolTip": "Board.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAiwDQAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T15:41:18.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Game.cs",
-              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Game.cs",
-              "RelativeDocumentMoniker": "Game.cs",
-              "ToolTip": "C:\\code\\Sainz\\Scrable\\Game.cs",
-              "RelativeToolTip": "Game.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAArwFIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T15:41:12.869Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "LettersBag.cs",
               "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
               "RelativeDocumentMoniker": "LettersBag.cs",
               "ToolTip": "C:\\code\\Sainz\\Scrable\\LettersBag.cs",
               "RelativeToolTip": "LettersBag.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-22T16:07:58.445Z",
+              "WhenOpened": "2025-02-06T14:08:52.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Fonction.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
+              "RelativeDocumentMoniker": "Fonction.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Fonction.cs",
+              "RelativeToolTip": "Fonction.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAcwD8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T14:08:42.154Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Board.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Board.cs",
+              "RelativeDocumentMoniker": "Board.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Board.cs",
+              "RelativeToolTip": "Board.cs",
+              "ViewState": "AgIAAIoAAAAAAAAAAAAcwLYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T13:57:11.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Game.cs",
+              "RelativeDocumentMoniker": "Game.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Game.cs",
+              "RelativeToolTip": "Game.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAcwEQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T13:46:46.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\code\\Sainz\\Scrable\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\code\\Sainz\\Scrable\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T13:45:21.845Z",
               "EditorCaption": ""
             }
           ]

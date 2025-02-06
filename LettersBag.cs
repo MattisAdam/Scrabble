@@ -37,9 +37,9 @@
         }
         public static char PickPiecesPosition(int position)
         {
-            var result = '#';
+            var result = ' ';
             var count = 0;
-            while (result == '#')
+            while (result == ' ')
             {
                 foreach (char pieces in lettersBag.Keys)
                 {
@@ -63,11 +63,6 @@
             int result = 0;
             result = lettersBag.Sum(x => x.Value);
             return result;
-        }
-        public static void PlayerPickLetters()
-        {
-
-            ///attention ici il faut en compte les probabilité de piocher chaque lettre. par exemple la proba de piocher 'E' est de 15/100
         }
     }
 }
