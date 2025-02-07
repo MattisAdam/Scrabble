@@ -41,9 +41,11 @@ namespace Scrable
             int positionI = 0;
             int positionJ = 0;
             int i = 0;
-            int pts = 0;
-            int factorPts = 1;
+            int ptsBonus = 0;
+            int ptsLetter = 0;
             var verif = true;
+            int factorpts = 0;
+            var score = new Score();
             while (verif == true)
             {
                 positionJ = _TargetPosition("Choose a horizontal position");
@@ -57,8 +59,11 @@ namespace Scrable
             {
                 foreach (var _letter in word)
                 {
-                    pts = _ValidationBoardBonus(positionI, positionJ+ i);
-                    if(pts != 0) { factorPts = pts * factorPts; }
+                    ptsLetter = ScoreGestion(_letter);
+                    ptsBonus = _ValidationBoardBonus(positionI, positionJ+ i);
+                    if(ptsBonus != 0) { factorpts += ptsBonus * ptsLetter; }
+                    else { factorpts += ptsLetter; }
+
                     grid[positionI, positionJ + i] = _letter;
                     i++;
                 }
@@ -67,17 +72,17 @@ namespace Scrable
             {
                 foreach (var _letter in word)
                 {
-                    pts = _ValidationBoardBonus(positionI + i, positionJ);
-                    if (pts != 0) { factorPts = pts * factorPts; }
+                    ptsLetter = ScoreGestion(_letter);
+                    ptsBonus = _ValidationBoardBonus(positionI + i, positionJ);
+                    if (ptsBonus != 0) { factorpts += ptsBonus * ptsLetter; }
+                    else { factorpts += ptsLetter; }
+                    
                     grid[positionI + i, positionJ] = _letter;
                     i++;
                 }
             }
-            if(factorPts == 1)
-            {
-                factorPts = 0;
-            }
-            Console.WriteLine($"Score : {factorPts}");
+            Console.WriteLine($"Score : {factorpts}");
+            score.StockScore(factorpts);
         }
         public void Display()
         {
@@ -159,7 +164,7 @@ namespace Scrable
 
             if (grid[positionI, positionJ] != ' ')
             {
-                Console.WriteLine("This place was already taken buddy");
+                Console.WriteLine("This place was already taken buddy, choose another position");
                 check = true;
             }
             return check;
@@ -167,14 +172,7 @@ namespace Scrable
         private int _ValidationBoardBonus(int positionI, int positionJ)
         {
             var valueBonus = bonus[positionI, positionJ];
-            //if (valueBonus > 0 && valueBonus < 5)
-            //{
-            //    Console.WriteLine($"Score worth {valueBonus} times");
-            //}
-            //else if (valueBonus == 0)
-            //{
-            //    Console.WriteLine("The word got any bonus.");
-            //}
+           
             return valueBonus;
 
 
@@ -182,8 +180,8 @@ namespace Scrable
 
         public int ScoreGestion(char letter)
         {
-            var score = new Score();
-            var pts = score.GetTheScoreOfTheLetter(letter);
+            var lowerLetter = Char.ToLower(letter);
+            var pts = Score.GetTheScoreOfTheLetter(lowerLetter);
           
             return pts;
         }

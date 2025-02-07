@@ -10,21 +10,19 @@ namespace Scrable
         public void InitGame()
         {
 
-            //LettersBag.InitLettersBag();
+            LettersBag.InitLettersBag();
             Score.InitScoreLetter();
-            var letter = Fonction.EnterChar();
-            _board.ScoreGestion(letter);
-            //InitPlayers();
-            //_board.InitBoard();
-            //_board.Display();
+            InitPlayers();
+            _board.InitBoard();
+            _board.Display();
         }
         public void InitPlayers()
         {
             var numberOfPlayers = GetNumbersOfplayers();
             var playerNames = AskNameOfPlayers(numberOfPlayers);
-            foreach (var playerName in playerNames)
+            foreach (var _playerName in playerNames)
             {
-                var player = new Player(playerName, new Rack());
+                var player = new Player(_playerName, new Rack());
                 _players.Add(player);
             }
         }

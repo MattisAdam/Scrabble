@@ -7,7 +7,7 @@ namespace Scrable
     {
         public string Name { get; set; }
         public Rack Rack { get; set; }
-        public int? Score { get; set; }
+        public int Score { get; set; }
         
 
         public Player()
@@ -18,7 +18,6 @@ namespace Scrable
         {
             Name = name;
             Rack = rack;
-            Score = 0;
         }
 
         public Player(int score, string name)
@@ -26,6 +25,11 @@ namespace Scrable
             Score = score;
             Name = name;
         }
+        public Player(int score)
+        {
+            Score = score;
+        }
+
 
         public string ChooseWord()
         {
