@@ -1,12 +1,19 @@
 ﻿namespace Scrable
 {
-    public static class LettersBag
+    public class LettersBag
     {
-        public static Dictionary<char, int> lettersBag
+        public Dictionary<char, int> lettersBag { get; private set; }
+        public static Random getRandomPositionOnLettersBag;
+
+        public LettersBag()
         {
-            get; private set;
-        } = new Dictionary<char, int>();
-        public static void InitLettersBag()
+            lettersBag = new Dictionary<char, int>();
+            getRandomPositionOnLettersBag = new Random();
+
+            InitLettersBag();
+        }
+    
+        public void InitLettersBag()
         {
             lettersBag.Add('A', 9);
             lettersBag.Add('B', 2);
@@ -35,7 +42,8 @@
             lettersBag.Add('Y', 1);
             lettersBag.Add('Z', 1);
         }
-        public static char PickPiecesPosition(int position)
+        public int NumberPiecesInBag() { return lettersBag.Sum(x => x.Value); }
+        public char PickPiecesPosition(int position)
         {
             var result = ' ';
             var count = 0;
@@ -43,11 +51,9 @@
             {
                 foreach (char pieces in lettersBag.Keys)
                 {
-
                     for (int i = 0; i < lettersBag[pieces]; i++)
                     {
                         count++;
-
                         if (count == position)
                         {
                             result = pieces;
@@ -58,11 +64,15 @@
             }
             return result;
         }
-        public static int NumberPiecesInBag()
+
+        public char GetPieceFromLettersBag()
         {
-            int result = 0;
-            result = lettersBag.Sum(x => x.Value);
-            return result;
+
+            int randomPosition = getRandomPositionOnLettersBag.Next(NumberPiecesInBag());
+            char pickedLetter = PickPiecesPosition(randomPosition);
+
+
+            return pickedLetter;
         }
     }
 }

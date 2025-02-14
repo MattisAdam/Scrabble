@@ -5,19 +5,17 @@
         private static HashSet<string> SetOfValidWords { get;  set; }
         static ValideWords()
         {
-            SetOfValidWords = new HashSet<string>();
+            SetOfValidWords = [];
         }
         public static void LoadWords(string filePath)
         {
             // Lire chaque ligne du fichier et l'ajouter à l'ensemble
             SetOfValidWords.Clear();
-            using (StreamReader sr = new StreamReader(filePath)) 
-            { 
-                string line;
-                while ((line = sr.ReadLine()) != null)
-                {
-                    SetOfValidWords.Add(_fixWords(line));
-                }
+            using StreamReader sr = new(filePath);
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                SetOfValidWords.Add(_fixWords(line));
             }
         }
         private static string _fixWords(string word)
@@ -34,5 +32,7 @@
             word = word.ToUpper();
             return word;
         }
+
+        //create a method for check word in txt files
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Scrable
 {
@@ -14,52 +15,42 @@ namespace Scrable
                 {
                     return number;
                 }
-                else
-                {
-                    Console.WriteLine(messageError);
-                }
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(messageError);
+                Console.ResetColor(); 
             }
         }
         public static string EnterString(string message = "Enter a string : ")
         {
             Console.WriteLine(message);
-            var x = Console.ReadLine();
-
-            return x;
+            return Console.ReadLine();
         }
-        public static char EnterChar(string message = "Enter a char : ") { 
-            Console.Write(message);
-            char x = Console.ReadKey().KeyChar;
-
-            return x;
-        }
-        public static char CharToUpper (char letter)
+        public static char EnterChar(string message = "Enter a char : ")
         {
-            letter = char.ToUpper(letter);
-            return letter;
+            Console.Write(message);
+            return Console.ReadKey().KeyChar;
         }
-        public static int MenuWord()
+        public static char CharToUpper(char letter) { return char.ToUpper(letter); }
+        public static int MenuWord(string messageError = "That's impossible ! retry.", string question = "How many letters were on your word ?")
         {
             int choice = 0;
             bool check = false;
             while (!check)
             {
-                Console.WriteLine("How many letters were on your word ?");
+                Console.WriteLine(question);
                 choice = EnterNumber();
-            
+
                 if (choice < Game.MaxLettersPerPlayer)
                 {
                     check = true;
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("That's impossible ! retry.");
-                }
                 
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(messageError);
+                Console.ResetColor();
             }
             return choice;
-            
         }
         public static int HorizontalOrVertical()
         {
@@ -67,12 +58,13 @@ namespace Scrable
             int result = 0;
             while (check == false)
             {
+                Console.WriteLine();
                 Console.WriteLine("Choose the orientation of your word");
                 Console.WriteLine("Horizontal --> h");
                 Console.WriteLine("Vertical --> v");
                 char choice = Fonction.EnterChar();
                 choice = Fonction.CharToUpper(choice);
-                if(choice == 'H')
+                if (choice == 'H')
                 {
                     result = 1;
                     check = true;
@@ -83,7 +75,7 @@ namespace Scrable
                     result = 2;
                     check = true;
                     return result;
-                }    
+                }
             }
             return result;
         }

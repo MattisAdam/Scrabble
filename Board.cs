@@ -1,13 +1,14 @@
-﻿using System.Windows.Markup;
-using static System.Formats.Asn1.AsnWriter;
-
-namespace Scrable
+﻿namespace Scrable
 {
     public class Board
     {
-        private char[,] grid = new char[15, 15];
-        private int[,] bonus = new int[15, 15];
-        private List<Player> _players = new List<Player>();
+        private char[,] grid;
+        private  int[,] bonus;
+        public Board()
+        {
+            grid = new char[15, 15];
+            bonus = new int[15, 15];
+        }
         public void InitBoard()
         {
             _createBoard();
@@ -15,9 +16,9 @@ namespace Scrable
         }
         private void _initialeBonus()
         {
-            Random bonusI = new Random();
-            Random bonusJ = new Random();
-            Random bonusMulti = new Random();
+            Random bonusI = new();
+            Random bonusJ = new();
+            Random bonusMulti = new();
             int multiple;
             for (int i = 0; i < 25; i++)
             {
@@ -29,60 +30,60 @@ namespace Scrable
                 bonus[placementI, placementJ] = multiple;
             }
         }
-
-        public void PlaceWord(string word)
+        public void PlaceWord(string word, Player player)
         {
-            var _player = new Player();
-            PlaceLetter(_player, word);
+            _placeLetter(player, word);
         }
 
-        public void PlaceLetter(Player player, string word)
+        private void _placeLetter(Player player, string word)
         {
-            int positionI = 0;
-            int positionJ = 0;
             int i = 0;
-            int ptsBonus = 0;
-            int ptsLetter = 0;
+            int totalPointOnTheBoard = 0;
             var verif = true;
-            int factorpts = 0;
-            var score = new Score();
+            var ptsLetter = 0;
+            int orientation = 0;
             while (verif == true)
             {
-                positionJ = _TargetPosition("Choose a horizontal position");
-                positionI = _TargetPosition("Choose a vertical position");
-                verif = _ValidationBoard(positionI, positionJ);
-            }
-
-            int orientation = Fonction.HorizontalOrVertical();
-            Console.WriteLine();
-            if (orientation == 1)
-            {
-                foreach (var _letter in word)
+                int positionJ = _targetPosition("Choose a horizontal position");
+                int positionI = _targetPosition("Choose a vertical position");
+                try
                 {
-                    ptsLetter = ScoreGestion(_letter);
-                    ptsBonus = _ValidationBoardBonus(positionI, positionJ+ i);
-                    if(ptsBonus != 0) { factorpts += ptsBonus * ptsLetter; }
-                    else { factorpts += ptsLetter; }
+                    verif = _validationBoard(0, positionJ);
 
-                    grid[positionI, positionJ + i] = _letter;
-                    i++;
+
+                     orientation = Fonction.HorizontalOrVertical();
                 }
-            }
-            else if (orientation == 2)
-            {
+                catch (Exception e) {
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine(e.Message);
+                    Console.ResetColor();
+                }
                 foreach (var _letter in word)
                 {
-                    ptsLetter = ScoreGestion(_letter);
-                    ptsBonus = _ValidationBoardBonus(positionI + i, positionJ);
-                    if (ptsBonus != 0) { factorpts += ptsBonus * ptsLetter; }
-                    else { factorpts += ptsLetter; }
+                    ptsLetter = ScoreLetter.GetTheScoreOfTheLetter(_letter);
                     
-                    grid[positionI + i, positionJ] = _letter;
-                    i++;
+                    if (orientation == 1)
+                    {
+                        int ptsBonus = _validationBoardBonus(0, positionJ + i);
+                        if (ptsBonus != 0) { totalPointOnTheBoard += ptsBonus * ptsLetter ; }
+                        else { totalPointOnTheBoard += ptsLetter ; }
+                        grid[0, positionJ + i] = _letter ;
+                        i++;
+                    }
+                    else if (orientation == 2)
+                    {
+                        int ptsBonus = _validationBoardBonus(0 + i, positionJ);
+                        if (ptsBonus != 0) { totalPointOnTheBoard += ptsBonus * ptsLetter ; }
+                        else { totalPointOnTheBoard += ptsLetter ; }
+                        grid[0 + i, positionJ] = _letter;
+                        i++;
+                    }
+                    
                 }
-            }
-            Console.WriteLine($"Score : {factorpts}");
-            score.StockScore(factorpts);
+                Console.WriteLine();
+                player.getScore(totalPointOnTheBoard);
+            } 
         }
         public void Display()
         {
@@ -152,16 +153,10 @@ namespace Scrable
                 }
             }
         }
-        private int _TargetPosition(string message)
-        {
-            Console.WriteLine(message);
-            int position = Fonction.EnterNumber();
-            return position;
-        }
-        private bool _ValidationBoard(int positionI, int positionJ)
+        private int _targetPosition(string message) { return Fonction.EnterNumber(message);}
+        private bool _validationBoard(int positionI, int positionJ)
         {
             bool check = false;
-
             if (grid[positionI, positionJ] != ' ')
             {
                 Console.WriteLine("This place was already taken buddy, choose another position");
@@ -169,22 +164,7 @@ namespace Scrable
             }
             return check;
         }
-        private int _ValidationBoardBonus(int positionI, int positionJ)
-        {
-            var valueBonus = bonus[positionI, positionJ];
-           
-            return valueBonus;
-
-
-        }
-
-        public int ScoreGestion(char letter)
-        {
-            var lowerLetter = Char.ToLower(letter);
-            var pts = Score.GetTheScoreOfTheLetter(lowerLetter);
-          
-            return pts;
-        }
+        private int _validationBoardBonus(int positionI, int positionJ) { return bonus[positionI, positionJ]; }
     }
 }
 

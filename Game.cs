@@ -1,81 +1,91 @@
 ﻿using System.Diagnostics.Metrics;
+using System.Net.Http.Headers;
 
 namespace Scrable
 {
     public class Game
     {
-        private Board _board = new Board();
-        public List<Player> _players = new List<Player>();
-        public readonly static int MaxLettersPerPlayer = 7;
-        public void InitGame()
-        {
+        public const int MaxLettersPerPlayer = 7;
 
-            LettersBag.InitLettersBag();
-            Score.InitScoreLetter();
-            InitPlayers();
+        private Board _board;
+        public List<Player> _players;
+
+        LettersBag lettersBag;
+        ScoreLetter Score;
+
+
+        public Game()
+        {
+            _board = new Board();
+            _players = new List<Player>();
+            lettersBag = new LettersBag();
+            Score = new ScoreLetter();
+
+            _initPlayers();
             _board.InitBoard();
             _board.Display();
-        }
-        public void InitPlayers()
-        {
-            var numberOfPlayers = GetNumbersOfplayers();
-            var playerNames = AskNameOfPlayers(numberOfPlayers);
-            foreach (var _playerName in playerNames)
-            {
-                var player = new Player(_playerName, new Rack());
-                _players.Add(player);
-            }
-        }
-        public int GetNumbersOfplayers()
-        {
-            int numberPlayers = Errors.NumberOfPlayer();
-            return numberPlayers;
-        }
-        public static int AskNumbersOfPlayers()
-        {
-            Console.WriteLine("How many players on the table ?");
-            var numberPlayers = Fonction.EnterNumber();
-            return numberPlayers;
-        }
-
-        public List<string> AskNameOfPlayers(int numberOfPlayers)
-        {
-            var listPlayers = new List<string>();
-
-            for (int i = 0; i < numberOfPlayers; i++)
-            {
-                Console.Write($"what the player {i + 1}'s name ?\n");
-                var playerName = Fonction.EnterString();
-                listPlayers.Add(playerName);
-            }
-            return listPlayers;
         }
 
         public void Play()
         {
-            while (Rack.rack.Count == 7)
+
+            var nbRound = _nmbRoundPlay();
+            int i = 0;
+            while (nbRound != i)
             {
-                RoundPlay();
+                _roundPlay();
+                i++;
+            }
+            
+        }
+        private static int _getNumbersOfplayers()
+        {
+            int maxPlayer = 5;
+            int nmbPlayer = 0;
+            nmbPlayer = Fonction.EnterNumber($"How many players on the table ?, Choose between 2 and {maxPlayer} players");
+            while (nmbPlayer < 2 || nmbPlayer > 5)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Choose between 2 and {maxPlayer} players");
+                Console.ResetColor();
+
+                nmbPlayer = Fonction.EnterNumber($"How many players on the table ?, Choose between 2 and {maxPlayer} players");
+            }
+            return nmbPlayer;
+        }
+        private void _initPlayers()
+        {
+            var numberOfPlayers = _getNumbersOfplayers();
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                var player = new Player();
+                _players.Add(player);
             }
         }
-        public void RoundPlay()
-        {
 
+        private void _roundPlay()
+        {
+            
             foreach (var _player in _players)
             {
                 Console.WriteLine();
-                Console.WriteLine($"it is {_player.Name}'s round");
-
-
+                Console.WriteLine($"is {_player.Name}'s round");
+                _player.Rack.DisplayRack();
                 var word = _player.ChooseWord();
-
-                _board.PlaceWord(word);
-
+                //check word in valid word 
+                _board.PlaceWord(word, _player);
                 Console.WriteLine();
                 _board.Display();
                 _player.Rack.PickLettersForPlayer();
             }
 
         }
+
+        private int _nmbRoundPlay()
+        {
+            return Fonction.EnterNumber("How many rounds do you want to play ?");
+        }
+
     }
 }
+

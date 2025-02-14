@@ -1,11 +1,14 @@
-﻿using Scrable;
-
-public class Program
+﻿namespace Scrable
 {
-    public static void Main(string[] args)
+    public class Program
     {
-        var game = new Game();
-        game.InitGame();
-        game.Play();
+        public static void Main(string[] args)
+        {
+            Console.Title = "Scrabble";
+            var game = new Game();
+
+            game.Play();
+           
+        }
     }
 }
