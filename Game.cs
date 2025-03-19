@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.Metrics;
-using System.Net.Http.Headers;
+﻿using Scrabble;
+
 
 namespace Scrable
 {
@@ -20,36 +20,33 @@ namespace Scrable
             _players = new List<Player>();
             lettersBag = new LettersBag();
             Score = new ScoreLetter();
-
+            
             _initPlayers();
-            _board.InitBoard();
             _board.Display();
         }
 
         public void Play()
-        {
-
+        { 
             var nbRound = _nmbRoundPlay();
             int i = 0;
             while (nbRound != i)
             {
+                Console.WriteLine($"Round {i + 1}");
                 _roundPlay();
                 i++;
             }
-            
         }
         private static int _getNumbersOfplayers()
         {
             int maxPlayer = 5;
-            int nmbPlayer = 0;
-            nmbPlayer = Fonction.EnterNumber($"How many players on the table ?, Choose between 2 and {maxPlayer} players");
+            int nmbPlayer = Fonction.EnterNumber($"How many players on the table ? Choose between 2 and {maxPlayer} players");
             while (nmbPlayer < 2 || nmbPlayer > 5)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Choose between 2 and {maxPlayer} players");
                 Console.ResetColor();
 
-                nmbPlayer = Fonction.EnterNumber($"How many players on the table ?, Choose between 2 and {maxPlayer} players");
+                nmbPlayer = Fonction.EnterNumber($"How many players on the table ? Choose between 2 and {maxPlayer} players");
             }
             return nmbPlayer;
         }
@@ -65,20 +62,20 @@ namespace Scrable
 
         private void _roundPlay()
         {
-            
             foreach (var _player in _players)
             {
+                _player.PicklettersFromBag(lettersBag);
                 Console.WriteLine();
                 Console.WriteLine($"is {_player.Name}'s round");
-                _player.Rack.DisplayRack();
-                var word = _player.ChooseWord();
-                //check word in valid word 
-                _board.PlaceWord(word, _player);
+                _player.ShowStatus();
                 Console.WriteLine();
+                var word = _player.ChooseWord();
+                _board.PlaceWord(_player, word);
                 _board.Display();
-                _player.Rack.PickLettersForPlayer();
+                _player.ShowStatus();
+                Console.WriteLine();
+                _player.PicklettersFromBag(lettersBag);
             }
-
         }
 
         private int _nmbRoundPlay()

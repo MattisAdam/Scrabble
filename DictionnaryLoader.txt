@@ -16,7 +16,7 @@ abasie
 abasourdi
 abasourdir
 abasourdissement
-abat-jour
+abatjour
 abats
 abattage
 abatteur
@@ -22603,6 +22603,7 @@ voulue
 voulut
 vous
 voûte
+vore
 voyage
 voyager
 voyages

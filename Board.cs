@@ -1,15 +1,20 @@
-﻿namespace Scrable
+﻿using Scrabble;
+using System.ComponentModel.Design;
+using System.Diagnostics.Metrics;
+
+namespace Scrable
 {
     public class Board
     {
         private char[,] grid;
-        private  int[,] bonus;
+        private int[,] bonus;
         public Board()
         {
             grid = new char[15, 15];
             bonus = new int[15, 15];
+            _InitBoard();
         }
-        public void InitBoard()
+        private void _InitBoard()
         {
             _createBoard();
             _initialeBonus();
@@ -26,64 +31,38 @@
                 int placementJ;
                 placementI = bonusI.Next(15);
                 placementJ = bonusJ.Next(15);
-                multiple = bonusMulti.Next(2, 5);                
+                multiple = bonusMulti.Next(2, 5);
                 bonus[placementI, placementJ] = multiple;
             }
         }
-        public void PlaceWord(string word, Player player)
+        public void PlaceWord(Player player, string word)
         {
-            _placeLetter(player, word);
-        }
-
-        private void _placeLetter(Player player, string word)
-        {
-            int i = 0;
-            int totalPointOnTheBoard = 0;
-            var verif = true;
-            var ptsLetter = 0;
+            var totalPointOnTheBoard = 0;
             int orientation = 0;
-            while (verif == true)
+            var positionJ = _targetPosition("Choose a horizontal position");
+            int positionI = _targetPosition("Choose a vertical position");
+            bool verif = IsAFreeCase(positionI, positionJ);
+            string NewWord = string.Empty;
+            if (verif)
             {
-                int positionJ = _targetPosition("Choose a horizontal position");
-                int positionI = _targetPosition("Choose a vertical position");
                 try
                 {
-                    verif = _validationBoard(0, positionJ);
-
-
-                     orientation = Fonction.HorizontalOrVertical();
+                    orientation = Fonction.HorizontalOrVertical();
+                    NewWord  = WordWithLetterAround(positionI, positionJ, orientation, word);
                 }
-                catch (Exception e) {
+                catch (Exception e)
+                {
                     Console.WriteLine();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(e.Message);
                     Console.ResetColor();
                 }
-                foreach (var _letter in word)
-                {
-                    ptsLetter = ScoreLetter.GetTheScoreOfTheLetter(_letter);
-                    
-                    if (orientation == 1)
-                    {
-                        int ptsBonus = _validationBoardBonus(0, positionJ + i);
-                        if (ptsBonus != 0) { totalPointOnTheBoard += ptsBonus * ptsLetter ; }
-                        else { totalPointOnTheBoard += ptsLetter ; }
-                        grid[0, positionJ + i] = _letter ;
-                        i++;
-                    }
-                    else if (orientation == 2)
-                    {
-                        int ptsBonus = _validationBoardBonus(0 + i, positionJ);
-                        if (ptsBonus != 0) { totalPointOnTheBoard += ptsBonus * ptsLetter ; }
-                        else { totalPointOnTheBoard += ptsLetter ; }
-                        grid[0 + i, positionJ] = _letter;
-                        i++;
-                    }
-                    
-                }
+                PutLetterOnTheGrid(word, positionI, positionJ, orientation);
+                totalPointOnTheBoard = CalcScore(NewWord, orientation, positionI, positionJ, totalPointOnTheBoard);
                 Console.WriteLine();
-                player.getScore(totalPointOnTheBoard);
-            } 
+                player.GetScore(totalPointOnTheBoard);
+            }
+
         }
         public void Display()
         {
@@ -153,18 +132,125 @@
                 }
             }
         }
-        private int _targetPosition(string message) { return Fonction.EnterNumber(message);}
-        private bool _validationBoard(int positionI, int positionJ)
+        private int _targetPosition(string message)
         {
-            bool check = false;
+            return Fonction.EnterNumber(message);
+        }
+        private bool IsAFreeCase(int positionI, int positionJ)
+        {
             if (grid[positionI, positionJ] != ' ')
             {
                 Console.WriteLine("This place was already taken buddy, choose another position");
-                check = true;
+                return false;
             }
-            return check;
+            return true;
         }
-        private int _validationBoardBonus(int positionI, int positionJ) { return bonus[positionI, positionJ]; }
+        private int _validationBoardBonus(int positionI, int positionJ)
+        {
+            return bonus[positionI, positionJ];
+        }
+        private int CalcScore(string word, int orientation, int positionITemp, int positionJTemp, int totalPointOnTheBoard)
+        {
+            int i = 0;
+            int ptsBonus = 0;
+            foreach (var _letter in word)
+            {
+                int ptsLetter = ScoreLetter.GetTheScoreOfTheLetter(_letter);
+
+                if (orientation == 1)
+                {
+                    if(i == word.Length - 1)
+                    {
+                         ptsBonus = _validationBoardBonus(positionITemp, positionJTemp);
+                    }
+                    else
+                    {
+                        ptsBonus = _validationBoardBonus(positionITemp, positionJTemp + i);
+                    }
+        //---------------------------------------------------------------------------------------------------------------------------
+                    if (ptsBonus != 0)
+                    {
+                        totalPointOnTheBoard += ptsBonus * ptsLetter;
+                    }
+                    else
+                    {
+                        totalPointOnTheBoard += ptsLetter;
+                    }
+                }
+
+
+                else if (orientation == 2)
+                {
+                    if (i == word.Length - 1)
+                    {
+                        ptsBonus = _validationBoardBonus(positionITemp, positionJTemp);
+                    }
+                    else
+                    {
+                        ptsBonus = _validationBoardBonus(positionITemp + i, positionJTemp);
+                    }
+                    //---------------------------------------------------------------------------------------------------------------------------
+                    if (ptsBonus != 0)
+                    {
+                        totalPointOnTheBoard += ptsBonus * ptsLetter;
+                    }
+                    else
+                    {
+                        totalPointOnTheBoard += ptsLetter;
+                    }
+                }
+                i++;
+            }
+            return totalPointOnTheBoard;
+        }
+        public string WordWithLetterAround(int positionI, int positionJ, int orientation, string word)
+        {
+            string newWord = string.Empty;
+            if (positionI != 0 || positionJ != 0)
+            {
+                if (orientation == 1)
+                {
+                    newWord = NewWord(word, positionI, positionJ - 1);
+                    Console.WriteLine(newWord);
+                }
+                else if (orientation == 2)
+                {
+                    newWord = NewWord(word, positionI - 1, positionJ);
+                    Console.WriteLine(newWord);
+                }
+                return newWord;
+            }
+            else
+            {
+                return word;
+            }
+        }
+        public string NewWord(string word, int positionI, int positionJ)
+        {
+            char caseGrid = grid[positionI, positionJ];
+            string x = caseGrid.ToString();
+            return $"{x}{word}";
+        }
+
+        public void PutLetterOnTheGrid(string word, int positionI, int positionJ, int orientation)
+        {
+            int i = 0;
+            if (orientation == 1)
+            {
+                foreach (char letter in word)
+                {
+                    grid[positionI, positionJ+i] = letter;
+                    i++;
+                }
+            }
+            else if(orientation == 2)
+            {
+                foreach (char letter in word)
+                {
+                    grid[positionI + i, positionJ] = letter;
+                    i++;
+                }
+            }
+        }
     }
 }
-

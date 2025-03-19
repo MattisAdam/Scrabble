@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using Scrabble;
+using System.Reflection;
 
 namespace Scrable
 {
@@ -6,56 +7,40 @@ namespace Scrable
     {
 
         public List<char> rack;
-        LettersBag bag;
-       
 
 
         public Rack()
         {
             rack = new List<char>();
-            bag = new LettersBag();
-            
-            PickLettersForPlayer();
-
         }
-        public void DisplayRack()
+        public void DisplayRack(List<char> rack)
         {
             Console.WriteLine(string.Join("-", rack));
-            Console.WriteLine("");
         }
-
-        public void PickLettersForPlayer()
+        public void PickLettersForPlayer(LettersBag bag)
         {
-            
             int requiredNumberOfNewLetters = Game.MaxLettersPerPlayer - rack.Count;
             for (int i = 0; i < requiredNumberOfNewLetters; i++)
             {
                 char letter = bag.GetPieceFromLettersBag();
-                AddLetterOnTheRack(letter);
+                AddLetterOnTheRack(rack, letter);
             }
-
-            
         }
-
         public bool VerificationLetterInRack(char letter, int position)
-        { 
+        {
             if (letter == rack[position]) { return true; }
             else { return false; }
         }
-
-        public void AddLetterOnTheRack(char letter)
+        public void AddLetterOnTheRack(List<char> rack, char letter)
         {
             if (rack.Count < Game.MaxLettersPerPlayer)
             {
                 rack.Add(letter);
             }
         }
-
-        public void RemoveLetterOnTheRack(char letter)
+        public void RemoveLetterOnTheRack(List<char> rack, char letter)
         {
             rack.Remove(letter);
         }
-
-
     }
 }

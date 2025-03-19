@@ -40,9 +40,8 @@ namespace Scrable
                 Console.WriteLine(question);
                 choice = EnterNumber();
 
-                if (choice < Game.MaxLettersPerPlayer)
+                if (choice <= Game.MaxLettersPerPlayer)
                 {
-                    check = true;
                     break;
                 }
                 

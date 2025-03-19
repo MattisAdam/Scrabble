@@ -3,12 +3,12 @@ using System.Security.Cryptography;
 
 namespace Scrable
 {
-    public  class ScoreLetter
+    public class ScoreLetter
     {
         public static Dictionary<char, int> LetterScore { get; private set; }
 
 
-        public  ScoreLetter()
+        public ScoreLetter()
         {
             LetterScore = new Dictionary<char, int>();
             InitScoreLetter();

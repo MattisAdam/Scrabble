@@ -5,10 +5,10 @@
         private static HashSet<string> SetOfValidWords { get;  set; }
         static ValideWords()
         {
-            SetOfValidWords = [];
         }
         public static void LoadWords(string filePath)
         {
+            SetOfValidWords = [];
             // Lire chaque ligne du fichier et l'ajouter à l'ensemble
             SetOfValidWords.Clear();
             using StreamReader sr = new(filePath);
@@ -29,10 +29,16 @@
             word = word.Replace('ö', 'o');
             word = word.Replace('ü', 'u');
             word = word.Replace('â', 'a');
+            word = word.Replace('ô', 'o');
             word = word.ToUpper();
             return word;
         }
 
         //create a method for check word in txt files
+        public static bool IsValidWordInDictionnary(string word)
+        {
+            return SetOfValidWords.Contains(word);
+
+        }
     }
 }
